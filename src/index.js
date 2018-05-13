@@ -7,6 +7,15 @@ var config = {
     width:960,
     height: 540,
     backgroundColor: 0xffddff,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: {
+                y : 200 
+            },
+            debug: false
+        }
+    },
     scene: [
         BootScene,
         MenuScene
