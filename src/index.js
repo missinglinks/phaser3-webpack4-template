@@ -4,7 +4,7 @@ import MenuScene from "./scenes/MenuScene"
 
 var config = {
     type: Phaser.AUTO,
-    width: 960,
+    width:960,
     height: 540,
     backgroundColor: 0xffddff,
     scene: [
@@ -13,10 +13,4 @@ var config = {
     ]
 }
 
-class Game extends Phaser.Game {
-    constructor () {
-        super(config)
-    }
-}
-
-window.game = new Game()
+window.game = new Phaser.Game(config)

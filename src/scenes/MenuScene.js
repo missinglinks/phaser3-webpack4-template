@@ -6,6 +6,13 @@ export default class extends Phaser.Scene {
     } 
 
     create () {
-        this.apple = this.add.image(200, 200, 'apple')
+        // put apple to the center of the game field
+        const x = this.sys.game.config.width / 2
+        const y = this.sys.game.config.height / 2
+        this.apple = this.add.image(x, y, 'apple')
+    }
+
+    update (time, delta) {
+        this.apple.rotation += delta/1000
     }
 }
