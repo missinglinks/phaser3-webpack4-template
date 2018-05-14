@@ -1,4 +1,5 @@
 import Phaser from 'phaser'
+import WebFont from 'webfontloader'
 
 export default class extends Phaser.Scene {
     constructor () {
@@ -6,11 +7,27 @@ export default class extends Phaser.Scene {
     }
 
     preload () {
+        this.fontsReady = false
+        this.loadingFonts = this.loadingFonts.bind(this)
+
         this.load.image('apple', './assets/apple.png')
+
+        WebFont.load({
+            google: {
+                families: ['Ultra']
+            },
+            active: this.loadingFonts
+        })
     }
 
-    create () {
-        console.log('loading complete')
-        this.scene.start('MenuScene')
+    create () {}
+
+    update () {
+        if (this.fontsReady)
+            this.scene.start('MenuScene')
+    }
+
+    loadingFonts () {
+        this.fontsReady = true
     }
 }

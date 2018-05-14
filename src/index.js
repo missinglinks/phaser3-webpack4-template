@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
-import BootScene from "./scenes/BootScene"
-import MenuScene from "./scenes/MenuScene"
+import BootScene from './scenes/BootScene'
+import MenuScene from './scenes/MenuScene'
+import GameScene from './scenes/GameScene'
 
 var config = {
     type: Phaser.AUTO,
@@ -18,7 +19,8 @@ var config = {
     },
     scene: [
         BootScene,
-        MenuScene
+        MenuScene,
+        GameScene
     ]
 }
 
