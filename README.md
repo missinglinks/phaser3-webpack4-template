@@ -1,7 +1,7 @@
 # Phaser 3 Webpack 4 Template
 
 Minimal project template for Phaser 3 using Webpack 4 and ES6.
-This project is mainly me trying to learn Webpack configuration and trying out some stuff in Phaser 3.
+This project is mainly me trying to learn Webpack configuration and trying out some stuff in Phaser 3 (https://photonstorm.github.io/phaser3-docs/index.html).
 
 Other, more competent, Phaser project templates can be found here:
 - https://github.com/photonstorm/phaser3-project-template
