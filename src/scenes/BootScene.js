@@ -7,11 +7,13 @@ export default class extends Phaser.Scene {
     }
 
     preload () {
+        // load image assets
+        this.load.image('apple', './assets/apple.png')
+        this.load.image('pear', './assets/pear.png')
+
+        // load webfont
         this.fontsReady = false
         this.loadingFonts = this.loadingFonts.bind(this)
-
-        this.load.image('apple', './assets/apple.png')
-
         WebFont.load({
             google: {
                 families: ['Ultra']
