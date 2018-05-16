@@ -41,7 +41,7 @@ export default class extends Phaser.Scene {
         // rotate bouncy apple 
         // need to check if body is enabled, 
         // otherwhise throws error at scene change
-        if (this.apple.exists === true)
+        if (this.apple.body)
             if (this.apple.body.velocity.x > 0)
                 this.apple.rotation += delta / 1000
             else
