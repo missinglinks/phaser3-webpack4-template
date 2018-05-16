@@ -5,9 +5,9 @@ import GameScene from './scenes/GameScene'
 
 var config = {
     type: Phaser.AUTO,
-    width:960,
-    height: 540,
-    backgroundColor: 0xffddff,
+    width:1024,
+    height: 768,
+    backgroundColor: 0xffdeb9,
     physics: {
         default: 'arcade',
         arcade: {

@@ -10,6 +10,10 @@ export default class extends Phaser.Scene {
         // load image assets
         this.load.image('apple', './assets/apple.png')
         this.load.image('pear', './assets/pear.png')
+        this.load.image('apple_dude', './assets/apfel_fuer_dude.png')
+        this.load.image('arm', './assets/arm.png')
+        this.load.image('dude', './assets/dude_ohne_apfel_ohne_arm_Ausschnitt.png')
+        this.load.image('finger', './assets/finger.png')
 
         // load webfont
         this.fontsReady = false
