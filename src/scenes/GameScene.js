@@ -20,9 +20,9 @@ export default class extends Phaser.Scene {
         
         this.pears = []
         xPositions.forEach((x, i) => {
-            let y = Phaser.Math.Between(80,350)
-            let veloY = Phaser.Math.Between(80, 400)
-            let scale = Phaser.Math.FloatBetween(0.3, 0.6)
+            let y = Phaser.Math.Between(400, 800)
+            let veloY = Phaser.Math.Between(400, 700)
+            let scale = Phaser.Math.FloatBetween(0.4, 0.7)
             this.pears[i] = this.pearGroup.create(x, y, 'pear')
             this.pears[i].setVelocityY(veloY)
             this.pears[i].setScale(scale)
@@ -62,7 +62,7 @@ export default class extends Phaser.Scene {
             }
         }
 
-        if (this.apple.x > 880)
+        if (this.apple.x > 960)
             this.scene.restart()
     }
 

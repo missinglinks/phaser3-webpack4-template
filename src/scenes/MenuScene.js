@@ -34,18 +34,20 @@ export default class extends Phaser.Scene {
             targets: this.apple,
             y: 300,
             ease: 'Power1',
-            duration: 1000,
+            duration: 500,
             yoyo: true,
             repeat: -1,
+            repeatDelay: 200
         })
 
         this.armTween = this.tweens.add({
             targets: this.arm,
             rotation: 0.2,
             ease: 'Power1',
-            duration: 1000,
+            duration: 500,
             yoyo: true,
             repeat: -1,
+            repeatDelay: 200
         })
 
         // add start game text
