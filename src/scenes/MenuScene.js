@@ -15,11 +15,40 @@ export default class extends Phaser.Scene {
         const centerY = this.sys.game.config.height / 2
 
         // add bouncy apple
-        this.apple = this.physics.add.image(centerX, centerY, 'apple')
-        this.apple.setCollideWorldBounds(true).setBounce(1, 1).setVelocity(200, 100)
+        //this.apple = this.physics.add.image(centerX, centerY, 'apple')
+        //this.apple.setCollideWorldBounds(true).setBounce(1, 1).setVelocity(200, 100)
+        
+        // add dude with apple
+        let y = Phaser.Math.Between(80,350)
+        let veloY = Phaser.Math.Between(80, 400)
+        let scale = Phaser.Math.FloatBetween(0.3, 0.6)
+        this.dude = this.add.image(centerX, centerY, 'dude')
+        this.arm = this.add.image(677, 424, 'arm')
+        this.arm.setOrigin(1, 0.5)
+        this.apple = this.add.image(589, 424, 'apple_dude')
+        
+        //this.apple.setVelocity(veloY).setCircle(50, 15, 20).setScale(scale)
+
+        var tween = this.tweens.add({
+            targets: this.apple,
+            y: 300,
+            ease: 'Power1',
+            duration: 1000,
+            yoyo: true,
+            repeat: -1,
+        })
+
+        var tween2 = this.tweens.add({
+            targets: this.arm,
+            rotation: 0.2,
+            ease: 'Power1',
+            duration: 1000,
+            yoyo: true,
+            repeat: -1,
+        })
 
         // add start game text
-        this.startGameText = this.add.text(centerX, centerY, 'start game', {
+        this.startGameText = this.add.text(centerX, 600, 'start game', {
             font: '56px Ultra',
             fill: '#4e678e'
         })
@@ -38,6 +67,7 @@ export default class extends Phaser.Scene {
     }
 
     update (time, delta) {
+        
         // rotate bouncy apple 
         // need to check if body is enabled, 
         // otherwhise throws error at scene change
