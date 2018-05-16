@@ -1,25 +1,22 @@
 import Phaser from 'phaser'
 
-// generates an array of points between with minimum vSpacing and hSpacing 
-export const randomSpacedPositions = (minX, maxX, minY,maxY, count, vSpacing, hSpacing) => {
-    // check if enough vertical space is available
-    let availableX = maxX - minX - vSpacing * (count - 1)
-    if (availableX < 0) return false
-    // check if enough horizontal space is available
-    let availableY = maxY - minY - vSpacing * (count - 1)
-    if (availableY < 0) return false
+/*
+sections range between :min: and :max: into :count: parts with :spacing:
+selects a random number in each part
+*/
+export const randomSpacedValues = (min, max, count, spacing) => {
+    // equal distribution
+    const step = (Math.floor(max - min) / count)
 
-    let arr = [];
-    for (let i = 0; i<count; i++) {
-        let tempX = Math.round( Math.random()*availableX )
-        let tempY = Math.round( Math.random()*availableY )
-        let pos = {x: null, y: null}
-        pos.x = ((i==0)? minX+tempX : arr[i-1].x + tempX + vSpacing)
-        pos.y = ((i==0)? minY+tempY : arr[i-1].y + tempY + hSpacing)
-        availableX -= tempX
-        availableY -= tempY
-        arr[i] = pos
+    // check if enough space is available
+    let availableSpace = max - min - spacing * (count - 1)
+    if (availableSpace < 0) 
+        return false
+
+    let values = []
+    //generate spaced values array
+    for (let i = 0; i < count; i++) {
+        values[i] = min + Phaser.Math.Between(i * step + spacing/2, (i + 1) * step - spacing/2)
     }
-    return arr;
-
+    return values
 } 
