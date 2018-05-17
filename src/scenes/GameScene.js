@@ -7,10 +7,14 @@ export default class extends Phaser.Scene {
     }
 
     create () {
-        console.log(this)
+
+        this.state = "play"
+
         this.cameras.main.setBackgroundColor(0xcfc4ae)
         const xPositions = randomSpacedValues(200, 850, 3, 150)
         console.log(xPositions)
+
+
 
         // add pear obstacles
         this.pearGroup = this.physics.add.group({
@@ -35,20 +39,30 @@ export default class extends Phaser.Scene {
         this.apple = this.physics.add.image(70, 440, 'apple')
         this.apple.setCollideWorldBounds(true)
         this.apple.setInteractive()
-        this.apple.setScale(0.8)
+        this.apple.setScale(0.75)
         this.apple.setBounce(0.3)
         this.apple.setCircle(72, 7, 7)
 
         this.velocity = 0
         // increase apple velocity on tab
         this.input.on('pointerup', (event) => {
-            this.velocity += 40
+            this.velocity += 35
             this.apple.setVelocityX(this.velocity)
         })
 
         // add collision
-        this.physics.add.overlap(this.apple, this.pearGroup, () => {
-            this.scene.pause()
+        this.physics.add.collider(this.apple, this.pearGroup, () => {
+
+            this.input.off('pointerup')
+            this.apple.disableBody(true, true)
+            this.cameras.main.shake(100)
+
+            this.winText = this.add.text(512, 369, 'you failed', {
+                font: '56px Ultra',
+                fill: '#4e678e'
+            })           
+            this.displayRetry() 
+
         })
 
         this.ground = this.physics.add.staticImage(512, 768-100, 'ground')
@@ -68,10 +82,35 @@ export default class extends Phaser.Scene {
                 this.apple.setVelocityX(this.velocity)
                 this.apple.rotation += this.velocity/4000
             }
+
         }
 
-        if (this.apple.x > 960)
+        if (this.apple.x > 960) {
+            // add welldone text
+            this.input.off('pointerup')
+            this.winText = this.add.text(512, 369, 'well done', {
+                font: '56px Ultra',
+                fill: '#4e678e'
+            })
+            this.displayRetry()
+        }
+    }
+
+    displayRetry() {
+        this.retry = this.add.text(512, 469, 'retry?', {
+            font: '46px Ultra',
+            fill: '#999999'
+        }).setInteractive()
+        
+        this.retry.on('pointerup', (event) => {
             this.scene.restart()
+        })
+        this.retry.on('pointerover', (event) => {
+            this.retry.setFill('#3e577e')
+        })
+        this.retry.on('pointerout', (event) => {        
+            this.retry.setFill('#999999',)
+        })    
     }
 
 }
