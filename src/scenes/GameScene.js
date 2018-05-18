@@ -87,12 +87,15 @@ export default class extends Phaser.Scene {
 
         if (this.apple.x > 960) {
             // add welldone text
-            this.input.off('pointerup')
-            this.winText = this.add.text(512, 369, 'well done', {
-                font: '56px Ultra',
-                fill: '#4e678e'
-            })
-            this.displayRetry()
+            if (this.state === "play") 
+            {
+                this.input.off('pointerup')
+                this.winText = this.add.text(512, 369, 'well done', {
+                    font: '56px Ultra',
+                    fill: '#4e678e'
+                })
+                this.displayRetry()
+            }
         }
     }
 
@@ -111,6 +114,7 @@ export default class extends Phaser.Scene {
         this.retry.on('pointerout', (event) => {        
             this.retry.setFill('#999999',)
         })    
+        this.state = "finished"
     }
 
 }

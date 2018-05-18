@@ -58,13 +58,13 @@ export default class extends Phaser.Scene {
 
         this.startGameText.setOrigin(0.5, 0.5).setInteractive()
         // add event handling to text
-        this.input.on('pointerover', (event) => {
+        this.startGameText.on('pointerover', (event) => {
             this.startGameText.setShadow(2, 2, '#000000', false, true)
         })
-        this.input.on('pointerout', (event) => {        
+        this.startGameText.on('pointerout', (event) => {        
             this.startGameText.setShadow(0, 0, '#000000', false, false)
         })
-        this.input.on('pointerup', (event) => {
+        this.startGameText.on('pointerup', (event) => {
             this.scene.start('GameScene')
         })
     }
